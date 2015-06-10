@@ -153,17 +153,13 @@
   <PropertyGroup>
     <PostBuildEvent>copy /y "$(ProjectDir)bin\$(ConfigurationName)\TotalUninstaller.exe" ".."</PostBuildEvent>
   </PropertyGroup>
-  <Import Project="$(SolutionDir)\.nuget\packages\Fody.1.28.3\build\Fody.targets" Condition="Exists('$(SolutionDir)\.nuget\packages\Fody.1.28.3\build\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('$(SolutionDir)\.nuget\packages\Fody.1.28.3\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\packages\Fody.1.28.3\build\Fody.targets'))" />
+    </PropertyGroup>    
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
     <Error Condition="!Exists('$(SolutionDir)\.nuget\packages\Fody.1.28.3\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\packages\Fody.1.28.3\build\Fody.targets'))" />
-    <Error Condition="!Exists('..\.nuget\packages\Fody.1.28.3\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\.nuget\packages\Fody.1.28.3\build\Fody.targets'))" />
   </Target>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Import Project="$(SolutionDir)\.nuget\packages\Fody.1.28.3\build\Fody.targets" Condition="Exists('$(SolutionDir)\.nuget\packages\Fody.1.28.3\build\Fody.targets')" />
-  <Import Project="..\.nuget\packages\Fody.1.28.3\build\Fody.targets" Condition="Exists('..\.nuget\packages\Fody.1.28.3\build\Fody.targets')" />
 </Project>
